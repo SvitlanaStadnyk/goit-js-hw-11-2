@@ -1,0 +1,113 @@
+body {
+  background-color: rgba(245, 245, 245, 0.763);
+  color: black;
+  font-family: 'Roboto', sans-serif;
+  font-size: 24px;
+}
+
+.gallery {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15;
+  margin-top: 150px;
+}
+
+.photo-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  width: 100%;
+  height: 100%;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12);
+}
+.img-item {
+  width: 100%;
+  height: 100%;
+}
+
+.info {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.info-item {
+  color: black;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.load-more {
+  cursor: pointer;
+  border-style: none;
+  border-radius: 5px;
+  font-weight: 700;
+  align-items: center;
+  background-color: rgb(3, 3, 106);
+  color: white;
+  text-transform: uppercase;
+  margin: 20px;
+  width: 200px;
+  height: 80px;
+  transform: translateX(-1000vw);
+  display: flex;
+  justify-content: center;
+}
+
+.load-more.is-visible {
+  transform: translateX(0);
+}
+.search-form {
+  border-left: transparent;
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 20px auto;
+  background-color: rgb(30, 3, 124);
+  width: 100%;
+  height: 80px;
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.2), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 1px 3px rgba(0, 0, 0, 0.12);
+}
+
+input {
+  height: 70%;
+  width: 25%;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: black;
+  background-color: white;
+  border-radius: 4px;
+  border-width: 0;
+  outline: none;
+}
+
+input::placeholder {
+  color: lightgray;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+input:focus {
+  border-width: 1px;
+}
+
+.search-icon {
+  width: 38px;
+  height: 45px;
+  cursor: pointer;
+}
