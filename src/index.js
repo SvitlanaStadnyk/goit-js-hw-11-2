@@ -36,8 +36,6 @@ searchForm.addEventListener('submit', async e => {
     elements: { searchQuery },
   } = e.target;
   searchQueryResult = searchQuery.value;
-  //   console.log('searchQueryResult:', `"${searchQueryResult}"`);
-  //   console.log('q:', `"${q}"`);
   if (searchQueryResult === '') {
     console.log(searchQueryResult);
     gallerySelector.innerHTML = '';
@@ -52,7 +50,6 @@ searchForm.addEventListener('submit', async e => {
     gallerySelector.innerHTML = '';
     btnLoadMore.classList.remove('is-visible');
   } else {
-    // console.log('page+1!!!');
     pageN += 1;
     pixabayAPI.page = `${pageN}`;
     btnLoadMore.classList.remove('is-visible');
@@ -65,7 +62,6 @@ searchForm.addEventListener('submit', async e => {
     gallerySelector.insertAdjacentHTML('beforeend', markupData.htmlCode);
     btnLoadMore.classList.add('is-visible');
     gallery.refresh();
-
     const {
       baseUrl,
       key,
@@ -78,11 +74,9 @@ searchForm.addEventListener('submit', async e => {
     } = pixabayAPI;
     const { total, totalHits, hits } = results;
     const totalPages = Math.ceil(totalHits / per_page);
-
     if (page >= totalPages) {
       btnLoadMore.classList.remove('is-visible');
     }
-
     Notify.success(`'Hooray! We found ${results.totalHits} images.'`);
     console.log('results', results);
   } catch (error) {
@@ -90,7 +84,6 @@ searchForm.addEventListener('submit', async e => {
       'Sorry, there are no images matching your search query. Please try again.'
     );
   }
-  //   console.log('');
 });
 const btnLoadMore = document.querySelector('.load-more');
 btnLoadMore.addEventListener('click', async () => {
@@ -102,7 +95,6 @@ btnLoadMore.addEventListener('click', async () => {
     gallerySelector.insertAdjacentHTML('beforeend', markupData.htmlCode);
     btnLoadMore.classList.add('is-visible');
     gallery.refresh();
-
     const {
       baseUrl,
       key,
@@ -115,19 +107,15 @@ btnLoadMore.addEventListener('click', async () => {
     } = pixabayAPI;
     const { total, totalHits, hits } = results;
     const totalPages = Math.ceil(totalHits / per_page);
-
     if (page >= totalPages) {
       btnLoadMore.classList.remove('is-visible');
     }
-
-    // console.log('results', results);
   } catch (error) {
     Notify.failure(
       "We're sorry, but you've reached the end of search results."
     );
   }
 });
-
 async function fetchPhotos(searchQueryResult) {
   const {
     baseUrl,
@@ -140,17 +128,10 @@ async function fetchPhotos(searchQueryResult) {
     per_page,
   } = pixabayAPI;
   pixabayAPI.page = `${pageN}`;
-  //   console.log('page', page);
-
   const response = await axios.get(
     `${baseUrl}?key=${key}&q=${q}&image_type=${image_type}&orientation=${orientation}&safesearch=${safesearch}&order=${order}&page=${page}&per_page=${per_page}`
   );
   const results = response.data;
-  //   console.log('response.data', response.data);
-
-  //   console.log('response', response);
-  //   console.log('page', page);
-
   const { total, totalHits, hits } = results;
   const totalPages = Math.ceil(totalHits / per_page);
 
@@ -164,7 +145,6 @@ async function fetchPhotos(searchQueryResult) {
     );
     return results;
   }
-
   console.log('totalHits', totalHits);
   console.log('per_page', per_page);
   console.log('totalPages=', totalPages);
