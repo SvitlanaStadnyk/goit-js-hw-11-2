@@ -35,7 +35,7 @@ searchForm.addEventListener('submit', async e => {
   const {
     elements: { searchQuery },
   } = e.target;
-  searchQueryResult = searchQuery.value;
+  searchQueryResult = searchQuery.value.trim();
   if (searchQueryResult === '') {
     console.log(searchQueryResult);
     gallerySelector.innerHTML = '';
